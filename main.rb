@@ -11,24 +11,9 @@ require_relative 'lib/product'
 require_relative 'lib/movie'
 require_relative 'lib/book'
 
-products = []
+current_path = File.dirname(__FILE__)
+movie = Movie.from_file(current_path + '/data/movies/01.txt')
+book = Book.from_file(current_path + '/data/books/01.txt')
 
-products << Movie.new(
-    title: 'Леон', year: '1994', director: 'Люк Бессон', price: 990, amount: 5
-)
-
-products << Movie.new(
-    title: 'Дурак', year: '2014', director: 'Юрий Быков', price: 390, amount: 1
-)
-
-products << Book.new(
-    title: 'Идиот',
-    genre: 'роман',
-    author: 'Федор Достоевский',
-    price: 1500,
-    amount: 10
-)
-
-puts "Вот такие товары у нас есть:"
-puts
-products.each  {|product| puts product}
+puts movie
+puts book
