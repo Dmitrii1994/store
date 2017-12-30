@@ -2,7 +2,8 @@ class ProductCollection
 
   PRODUCT_TYPES = {
       movie: {dir: 'movies', class: Movie},
-       book: {dir: 'books', class: Book}
+       book: {dir: 'books', class: Book},
+       disk: {dir: 'disk', class: Disk}
   }
 
   def initialize(products = [])
@@ -25,6 +26,15 @@ class ProductCollection
 
   def to_a
     @products
+  end
+
+  def buy_item(item_index)
+    bought_item = @products[item_index]
+    bought_item.amount -= 1
+
+    @products.delete_at(item_index) if bought_item == 0
+
+    bought_item
   end
 
   def sort!(params)
